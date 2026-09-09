@@ -1,522 +1,222 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: "Comfortaa", sans-serif;
-    background: #fff5f8;
-    color: #542b3b;
-    overflow-x: hidden;
-}
-
 /* =========================
-   INTRO
+   INTERACTIVE ANALYZER
 ========================= */
 
-.intro {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.interactive {
+    padding: 110px 20px;
     text-align: center;
-
-    background:
-        radial-gradient(circle at top, #fff 0%, transparent 45%),
-        linear-gradient(135deg, #ffdce8, #fff1f5);
-
-    padding: 30px;
+    background: #fff7fa;
 }
 
-.intro-content {
-    animation: float 4s ease-in-out infinite;
-}
-
-.bear {
-    font-size: 75px;
+.interactive h2 {
+    font-size: clamp(35px, 8vw, 60px);
+    line-height: 1.3;
     margin-bottom: 20px;
 }
 
-.small-text {
-    font-size: 14px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    opacity: .7;
-}
-
-.intro h1 {
+.interactive h2 span {
     font-family: "Pacifico", cursive;
-    font-size: clamp(50px, 12vw, 100px);
-    color: #e65b83;
-    margin: 15px 0;
+    color: #e85d87;
+    font-weight: normal;
 }
 
-.intro-subtitle {
+.analyzer-intro {
+    max-width: 600px;
+    margin: 0 auto 60px;
     line-height: 1.8;
-    color: #805365;
+    opacity: .65;
 }
 
-.love-button {
-    margin-top: 30px;
-    border: none;
-    background: #e85d87;
-    color: white;
-    padding: 16px 30px;
-    border-radius: 50px;
-    font-family: inherit;
-    font-weight: 700;
-    font-size: 15px;
-    cursor: pointer;
-    box-shadow: 0 10px 30px rgba(232, 93, 135, .3);
+
+/* CALCULATOR CARDS */
+
+.calculator {
+    max-width: 650px;
+    margin: 25px auto;
+
+    padding: 35px 25px;
+
+    background: white;
+
+    border-radius: 30px;
+
+    box-shadow:
+        0 15px 40px rgba(100, 40, 60, .08);
+
     transition: .3s;
 }
 
-.love-button:hover {
-    transform: translateY(-4px) scale(1.03);
+.calculator:hover {
+    transform: translateY(-5px);
 }
 
-
-/* =========================
-   MAIN
-========================= */
-
-#main {
-    display: none;
-}
-
-
-/* =========================
-   HERO
-========================= */
-
-.hero {
-    min-height: 100vh;
-    padding: 100px 25px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    text-align: center;
-
-    background:
-        radial-gradient(circle, #fff 0%, transparent 55%),
-        #ffe9f0;
-}
-
-.sparkles {
-    font-size: 35px;
-    color: #e85d87;
-    margin-bottom: 20px;
-    letter-spacing: 15px;
-}
-
-.eyebrow {
-    color: #df547c;
-    font-size: 12px;
-    font-weight: bold;
-    letter-spacing: 4px;
+.calculator-icon {
+    font-size: 45px;
     margin-bottom: 15px;
 }
 
-.hero h2 {
-    font-size: clamp(38px, 9vw, 80px);
-    line-height: 1.15;
-    max-width: 900px;
+.calculator h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
 }
 
-.hero h2 span,
-.beautiful h2 span,
-.gallery-section h2 span {
-    font-family: "Pacifico", cursive;
-    color: #e85d87;
-    font-weight: normal;
-}
-
-.hero > p {
-    margin-top: 25px;
-    opacity: .7;
-}
-
-.heart-big {
-    font-size: 100px;
-    color: #e85d87;
-    animation: heartbeat 1.5s infinite;
-    margin: 20px;
-}
-
-.scroll-text {
-    font-size: 12px;
-    letter-spacing: 2px;
-}
-
-
-/* =========================
-   LETTER
-========================= */
-
-.letter-section {
-    padding: 100px 20px;
-    background: #fff;
-}
-
-.section-card {
-    max-width: 750px;
-    margin: auto;
-    background: #fff8fa;
-    padding: 45px;
-    border-radius: 30px;
-
-    box-shadow: 0 20px 60px rgba(100, 40, 60, .08);
-    text-align: center;
-}
-
-.card-icon {
-    font-size: 45px;
-}
-
-.section-card h2 {
-    margin: 15px 0 35px;
-    font-size: 30px;
-}
-
-.letter {
-    text-align: left;
-    line-height: 2;
-    color: #765261;
-}
-
-.letter p {
+.calculator p {
+    font-size: 13px;
+    opacity: .6;
     margin-bottom: 20px;
 }
 
-.signature {
-    font-family: "Pacifico", cursive;
-    color: #e85d87;
-    font-size: 22px;
-}
+.calculator button,
+.secret button {
 
+    border: none;
 
-/* =========================
-   BEAUTIFUL
-========================= */
+    background: #e85d87;
 
-.beautiful {
-    padding: 110px 20px;
-    text-align: center;
-    background: #fff0f5;
-}
+    color: white;
 
-.beautiful h2 {
-    font-size: clamp(40px, 8vw, 65px);
-    margin-bottom: 60px;
-}
+    padding: 14px 25px;
 
-.reasons {
-    max-width: 1000px;
-    margin: auto;
+    border-radius: 50px;
 
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-}
+    font-family: inherit;
 
-.reason {
-    background: rgba(255,255,255,.8);
-    padding: 35px 25px;
-    border-radius: 25px;
+    font-weight: bold;
+
+    cursor: pointer;
+
     transition: .3s;
 }
 
-.reason:hover {
-    transform: translateY(-8px);
-}
+.calculator button:hover,
+.secret button:hover {
 
-.reason div {
-    font-size: 45px;
-    margin-bottom: 20px;
-}
+    transform: scale(1.05);
 
-.reason h3 {
-    margin-bottom: 12px;
-}
-
-.reason p {
-    font-size: 14px;
-    line-height: 1.8;
-    opacity: .7;
 }
 
 
-/* =========================
-   GALLERY
-========================= */
+/* RESULT */
 
-.gallery-section {
-    padding: 110px 20px;
-    text-align: center;
-    background: #fff;
-}
+.result {
 
-.gallery-section h2 {
-    font-size: clamp(30px, 7vw, 55px);
-    margin-bottom: 50px;
-}
+    min-height: 25px;
 
-.gallery {
-    max-width: 1000px;
-    margin: auto;
+    margin-top: 25px;
 
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.photo {
-    position: relative;
-    border-radius: 25px;
-    overflow: hidden;
-    aspect-ratio: 4 / 5;
-    background: #ffe1eb;
-    box-shadow: 0 15px 35px rgba(70, 30, 45, .12);
-}
-
-.photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: .5s;
-}
-
-.photo:hover img {
-    transform: scale(1.08);
-}
-
-.photo-caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-
-    padding: 25px 15px 18px;
-
-    color: white;
-    font-size: 13px;
     font-weight: bold;
 
-    background: linear-gradient(transparent, rgba(0,0,0,.65));
-}
+    line-height: 1.7;
 
-.photo-note {
-    margin-top: 30px;
-    font-size: 13px;
-    opacity: .5;
+    color: #df547c;
 }
 
 
 /* =========================
-   LOVE METER
+   SECRET
 ========================= */
 
-.love-meter {
-    padding: 110px 20px;
+.secret {
+
+    padding: 120px 20px;
+
     text-align: center;
+
     background: #ffe9f0;
 }
 
-.love-meter h2 {
+.secret h2 {
+
     font-size: clamp(35px, 8vw, 60px);
-    margin-bottom: 50px;
+
+    margin-bottom: 20px;
+
 }
 
-.meter-box {
-    max-width: 600px;
-    margin: auto;
-}
+.secret h2 span {
 
-.meter {
-    width: 100%;
-    height: 25px;
-    background: white;
-    border-radius: 50px;
-    overflow: hidden;
-}
-
-.meter-fill {
-    height: 100%;
-    width: 0%;
-    background: #e85d87;
-    border-radius: 50px;
-    transition: width 3s ease;
-}
-
-#meterText {
-    margin: 25px;
-    font-weight: bold;
-}
-
-.meter-box button {
-    border: none;
-    background: #e85d87;
-    color: white;
-    padding: 15px 25px;
-    border-radius: 50px;
-    cursor: pointer;
-    font-family: inherit;
-    font-weight: bold;
-}
-
-
-/* =========================
-   FINAL
-========================= */
-
-.final {
-    min-height: 100vh;
-    padding: 80px 25px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    text-align: center;
-
-    background:
-        radial-gradient(circle at center, #fff 0%, transparent 50%),
-        #ffdce8;
-}
-
-.final-content {
-    max-width: 700px;
-}
-
-.big-heart {
-    font-size: 90px;
-    animation: heartbeat 1.5s infinite;
-}
-
-.final h2 {
     font-family: "Pacifico", cursive;
+
     color: #e85d87;
-    font-size: 70px;
-    margin: 20px;
-}
 
-.final-message {
-    font-size: 25px;
-    line-height: 1.7;
-}
-
-.final-content > p:not(.final-message) {
-    margin-top: 15px;
-    opacity: .7;
-}
-
-.forever {
-    margin-top: 45px;
-    font-size: 25px;
-    font-weight: bold;
-}
-
-.forever span {
-    font-family: "Pacifico", cursive;
-    color: #e85d87;
     font-weight: normal;
+
 }
 
-.ending {
-    margin-top: 70px !important;
-    font-size: 11px;
-    letter-spacing: 2px;
-}
+.secret > p:not(.eyebrow) {
 
+    margin-bottom: 30px;
 
-/* =========================
-   FLOATING HEARTS
-========================= */
+    opacity: .65;
 
-.heart {
-    position: fixed;
-    bottom: -30px;
-    pointer-events: none;
-    z-index: 999;
-
-    animation: rise linear forwards;
 }
 
 
-/* =========================
-   ANIMATIONS
-========================= */
+#secretResult {
 
-@keyframes rise {
+    max-width: 650px;
+
+    margin: 40px auto 0;
+
+}
+
+
+.secret-message {
+
+    background: white;
+
+    padding: 40px 30px;
+
+    border-radius: 30px;
+
+    line-height: 1.9;
+
+    box-shadow:
+        0 20px 50px rgba(100, 40, 60, .1);
+
+    animation: secretAppear .8s ease;
+
+}
+
+.secret-heart {
+
+    font-size: 50px;
+
+    margin-bottom: 20px;
+
+}
+
+.secret-message p {
+
+    margin-bottom: 20px;
+
+}
+
+.secret-message strong {
+
+    color: #e85d87;
+
+    font-size: 20px;
+
+}
+
+
+@keyframes secretAppear {
+
     from {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
+
+        opacity: 0;
+
+        transform: translateY(20px) scale(.95);
+
     }
 
     to {
-        transform: translateY(-110vh) rotate(360deg);
-        opacity: 0;
-    }
-}
 
-@keyframes heartbeat {
-    0%, 100% {
-        transform: scale(1);
-    }
+        opacity: 1;
 
-    50% {
-        transform: scale(1.18);
-    }
-}
+        transform: translateY(0) scale(1);
 
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-12px);
-    }
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 700px) {
-
-    .section-card {
-        padding: 30px 22px;
-    }
-
-    .reasons {
-        grid-template-columns: 1fr;
-    }
-
-    .gallery {
-        grid-template-columns: 1fr;
-        max-width: 400px;
-    }
-
-    .photo {
-        aspect-ratio: 4 / 5;
-    }
-
-    .final h2 {
-        font-size: 55px;
-    }
-
-    .final-message {
-        font-size: 20px;
     }
 
 }
