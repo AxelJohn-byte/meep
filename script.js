@@ -1,375 +1,101 @@
-const toolData = {
-
-  love: {
-
-    title: "♡ Love Calculator",
-
-    icon: "♥",
-
-    question:
-      "How much do I love you?",
-
-    sub:
-      "Let's calculate something that probably can't be measured.",
-
-    result:
-      "LOVE: 999999999999% ♡<br>" +
-      "<small>ERROR: The love level is too large to calculate.</small>"
-
-  },
-
-
-  cute: {
-
-    title: "★ Cuteness Test",
-
-    icon: "★",
-
-    question:
-      "Just how cute are you?",
-
-    sub:
-      "Scanning Meep's cuteness levels...",
-
-    result:
-      "CUTENESS: 247% ♡<br>" +
-      "<small>WARNING: Cuteness levels dangerously high.</small>"
-
-  },
-
-
-  gorgeous: {
-
-    title:
-      "✧ Gorgeousness Detector",
-
-    icon:
-      "✧",
-
-    question:
-      "Are you gorgeous?",
-
-    sub:
-      "Running highly scientific analysis...",
-
-    result:
-      "GORGEOUSNESS: 9999999% ♡<br>" +
-      "<small>ERROR: Number too large to display.</small>"
-
-  },
-
-
-  miss: {
-
-    title:
-      "♡ Miss You Meter",
-
-    icon:
-      "♡",
-
-    question:
-      "How much do I miss you?",
-
-    sub:
-      "Checking distance between my heart and you...",
-
-    result:
-      "SEVERE MEEP DEFICIENCY ♡<br>" +
-      "<small>Prescription: One Meep hug immediately.</small>"
-
-  }
-
-};
-
-
-
-let activeTool = null;
-
-
-
-/* OPEN TOOL */
-
-function openTool(type) {
-
-  activeTool = type;
-
-  const data =
-    toolData[type];
-
-
-  document.getElementById(
-    "modalTitle"
-  ).textContent =
-    data.title;
-
-
-  document.getElementById(
-    "modalIcon"
-  ).textContent =
-    data.icon;
-
-
-  document.getElementById(
-    "modalQuestion"
-  ).textContent =
-    data.question;
-
-
-  document.getElementById(
-    "modalSub"
-  ).textContent =
-    data.sub;
-
-
-  document.getElementById(
-    "modalResult"
-  ).innerHTML =
-    "";
-
-
-  const button =
-    document.getElementById(
-      "modalAction"
-    );
-
-
-  if (type === "miss") {
-
-    button.textContent =
-      "Check ♡";
-
-  }
-
-  else if (type === "gorgeous") {
-
-    button.textContent =
-      "Scan ♡";
-
-  }
-
-  else if (type === "cute") {
-
-    button.textContent =
-      "Check ♡";
-
-  }
-
-  else {
-
-    button.textContent =
-      "Calculate ♡";
-
-  }
-
-
-  document
-    .getElementById("toolModal")
-    .classList.add("show");
-
-
-  document
-    .getElementById("toolModal")
-    .setAttribute(
-      "aria-hidden",
-      "false"
-    );
-
+function openWin(id) {
+    const windows = document.querySelectorAll('.window');
+    windows.forEach(win => win.classList.remove('active'));
+
+    const target = document.getElementById(id);
+    if (target) {
+        target.classList.add('active');
+    }
 }
 
-
-
-/* CLOSE TOOL */
-
-function closeTool() {
-
-  document
-    .getElementById("toolModal")
-    .classList.remove("show");
-
-
-  document
-    .getElementById("toolModal")
-    .setAttribute(
-      "aria-hidden",
-      "true"
-    );
-
+function closeWin(id) {
+    document.getElementById(id).classList.remove('active');
+    if (id !== 'win-desktop') {
+        openWin('win-desktop');
+    }
 }
 
-
-
-/* CALCULATE */
-
-function calculateTool() {
-
-  const result =
-    document.getElementById(
-      "modalResult"
-    );
-
-
-  const data =
-    toolData[activeTool];
-
-
-  result.innerHTML =
-    "calculating... ♡";
-
-
-  setTimeout(() => {
-
-    result.innerHTML =
-      data.result;
-
-  }, 650);
-
+// Love Calculator Animation
+function runCalc() {
+    const fill = document.getElementById('pf1');
+    const res = document.getElementById('res1');
+    fill.style.width = '100%';
+    setTimeout(() => {
+        res.style.display = 'block';
+        triggerConfetti();
+    }, 1500);
 }
 
-
-
-/* COMPLIMENT MACHINE */
-
-function newCompliment() {
-
-  const compliments = [
-
-    "You make the world feel a little softer just by being in it. ♡",
-
-    "You're ridiculously pretty. It's honestly unfair. ♡",
-
-    "If being adorable were illegal, you'd be in serious trouble.",
-
-    "You're my favorite notification. Every single time.",
-
-    "You have no idea how much brighter you make my days. ♡",
-
-    "I could compliment you all day and still run out of words.",
-
-    "You're the kind of person I could never get tired of choosing. ♡"
-
-  ];
-
-
-  const box =
-    document.getElementById(
-      "compliment"
-    );
-
-
-  const random =
-    Math.floor(
-      Math.random() *
-      compliments.length
-    );
-
-
-  box.textContent =
-    compliments[random];
-
+// Cuteness Meter Animation
+function runCuteness() {
+    const fill = document.getElementById('pf2');
+    const res = document.getElementById('res2');
+    fill.style.width = '100%';
+    setTimeout(() => {
+        res.style.display = 'block';
+        triggerConfetti();
+    }, 1500);
 }
 
-
-
-/* SECRET MESSAGE */
-
-function revealSecret() {
-
-  const icon =
-    document.getElementById(
-      "secretIcon"
-    );
-
-
-  icon.textContent =
-    "💗";
-
-
-  const windowBody =
-    icon.parentElement;
-
-
-  const message =
-    windowBody.querySelector(
-      ".soft"
-    );
-
-
-  message.textContent =
-    "Meep... you're my favorite person. " +
-    "I hope you never forget that. ♡";
-
-
-  const button =
-    windowBody.querySelector(
-      "button"
-    );
-
-
-  button.textContent =
-    "I love you too ♡";
-
-
-  button.onclick = () => {
-
-    message.textContent =
-      "There. That's all I wanted to say. " +
-      "I love you, always. ♡";
-
-  };
-
+// Gorgeousness Detector Animation
+function runGorgeous() {
+    const fill = document.getElementById('pf3');
+    const res = document.getElementById('res3');
+    fill.style.width = '100%';
+    setTimeout(() => {
+        res.style.display = 'block';
+        triggerConfetti();
+    }, 1500);
 }
 
+// Miss You Meter Trigger
+function runMissYou() {
+    document.getElementById('res4').style.display = 'block';
+    triggerConfetti();
+}
 
+// Compliments Machine Logic
+const compliments = [
+    "You make the world brighter just by being in it. ♡",
+    "Your smile is my absolute favorite thing in the world. 😊",
+    "You are 100% cute even when you're mad! 😤💖",
+    "Talking to you is the highlight of my day, always. ✨",
+    "You have the sweetest, kindest heart. 🌸",
+    "You are doing amazing, and I am so proud of you! 💕"
+];
+let compIndex = 0;
 
-/* SCROLL */
+function nextCompliment() {
+    compIndex = (compIndex + 1) % compliments.length;
+    document.getElementById('compliment-text').innerText = compliments[compIndex];
+}
 
-function scrollToSection(id) {
+// Runaway "NO" Button Logic
+function dodgeBtn() {
+    const btn = document.getElementById('no-game-btn');
+    const x = Math.random() * 140 - 70;
+    const y = Math.random() * 80 - 40;
+    btn.style.transform = `translate(${x}px, ${y}px)`;
+}
 
-  document
-    .getElementById(id)
-    .scrollIntoView({
-      behavior: "smooth"
+// Confetti Particle Burst
+function triggerConfetti() {
+    confetti({
+        particleCount: 70,
+        spread: 60,
+        origin: { y: 0.6 }
     });
-
 }
 
+// Real-time Clock Updates
+function updateClock() {
+    const now = new Date();
+    let hours = now.getHours();
+    let minutes = now.getMinutes();
+    hours = hours % 12 || 12;
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    document.getElementById('clock').innerText = `${hours}:${minutes}`;
+}
 
-
-/* CLICK OUTSIDE POPUP */
-
-document
-  .getElementById("toolModal")
-  .addEventListener(
-    "click",
-    (event) => {
-
-      if (
-        event.target.id ===
-        "toolModal"
-      ) {
-
-        closeTool();
-
-      }
-
-    }
-  );
-
-
-
-/* ESCAPE KEY */
-
-document.addEventListener(
-  "keydown",
-  (event) => {
-
-    if (
-      event.key === "Escape"
-    ) {
-
-      closeTool();
-
-    }
-
-  }
-);
+setInterval(updateClock, 1000);
+updateClock();
