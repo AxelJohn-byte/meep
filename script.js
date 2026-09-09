@@ -1,86 +1,40 @@
 /* =========================
-   START
+   OPEN WEBSITE
 ========================= */
 
-function startLove() {
+function openSite() {
 
-    const intro = document.getElementById("intro");
-    const main = document.getElementById("main");
+    const opening =
+        document.getElementById("opening");
 
-    intro.style.opacity = "0";
-    intro.style.transition = "opacity 1s ease";
+    const main =
+        document.getElementById("main");
+
+    opening.style.opacity = "0";
+
+    opening.style.transition =
+        "opacity .6s ease";
 
     setTimeout(() => {
 
-        intro.style.display = "none";
+        opening.style.display = "none";
+
         main.style.display = "block";
 
         window.scrollTo(0, 0);
 
-        startHearts();
-
-    }, 1000);
+    }, 600);
 }
 
 
 /* =========================
-   FLOATING HEARTS
+   LOVE
 ========================= */
 
-function createHeart() {
-
-    const heart = document.createElement("div");
-
-    heart.classList.add("heart");
-
-    const hearts = [
-        "❤️",
-        "💕",
-        "💗",
-        "💖",
-        "💘",
-        "💞",
-        "♡"
-    ];
-
-    heart.innerHTML =
-        hearts[Math.floor(Math.random() * hearts.length)];
-
-    heart.style.left =
-        Math.random() * 100 + "vw";
-
-    heart.style.fontSize =
-        (Math.random() * 20 + 12) + "px";
-
-    heart.style.animationDuration =
-        (Math.random() * 5 + 5) + "s";
-
-    document.getElementById("hearts")
-        .appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, 10000);
-}
-
-
-function startHearts() {
-
-    setInterval(() => {
-        createHeart();
-    }, 700);
-
-}
-
-
-/* =========================
-   LOVE CALCULATOR
-========================= */
-
-function loveMeter() {
+function calculateLove() {
 
     const result =
-        document.getElementById("loveResult");
+        document.getElementById("loveAnswer");
 
     result.innerHTML =
         "Calculating... ❤️";
@@ -88,30 +42,30 @@ function loveMeter() {
     setTimeout(() => {
 
         result.innerHTML =
-            "❤️ 100%";
+            "Love level: 100%";
 
-    }, 1000);
-
-    setTimeout(() => {
-
-        result.innerHTML =
-            "❤️ 1,000%";
-
-    }, 2000);
+    }, 800);
 
     setTimeout(() => {
 
         result.innerHTML =
-            "❤️ ERROR: Love level exceeded maximum capacity.";
+            "Recalculating... 1,000%";
 
-    }, 3200);
+    }, 1600);
 
     setTimeout(() => {
 
         result.innerHTML =
-            "Final result: I love you more than this calculator can handle. 🥹❤️";
+            "ERROR: Love level exceeds calculator capacity. 💀❤️";
 
-    }, 5000);
+    }, 2600);
+
+    setTimeout(() => {
+
+        result.innerHTML =
+            "Final answer: I love you more than this thing can measure. 🥹❤️";
+
+    }, 4000);
 }
 
 
@@ -119,10 +73,10 @@ function loveMeter() {
    CUTENESS
 ========================= */
 
-function calculateCuteness() {
+function calculateCute() {
 
     const result =
-        document.getElementById("cuteResult");
+        document.getElementById("cuteAnswer");
 
     result.innerHTML =
         "Scanning Meep... 🎀";
@@ -130,34 +84,34 @@ function calculateCuteness() {
     setTimeout(() => {
 
         result.innerHTML =
-            "Cuteness: 247% 🎀";
+            "Cuteness: 247%";
 
-    }, 1500);
-
-    setTimeout(() => {
-
-        result.innerHTML =
-            "WARNING ⚠️ Cuteness levels are dangerously high.";
-
-    }, 3000);
+    }, 1000);
 
     setTimeout(() => {
 
         result.innerHTML =
-            "Conclusion: You're ridiculously cute. 🥹🎀";
+            "WARNING: Cuteness levels dangerously high. ⚠️";
 
-    }, 4500);
+    }, 2200);
+
+    setTimeout(() => {
+
+        result.innerHTML =
+            "Conclusion: You're ridiculously cute. 🎀❤️";
+
+    }, 3500);
 }
 
 
 /* =========================
-   GORGEOUSNESS
+   GORGEOUS
 ========================= */
 
 function calculateGorgeous() {
 
     const result =
-        document.getElementById("gorgeousResult");
+        document.getElementById("gorgeousAnswer");
 
     result.innerHTML =
         "Scanning... ✨";
@@ -165,30 +119,30 @@ function calculateGorgeous() {
     setTimeout(() => {
 
         result.innerHTML =
-            "Analyzing face card...";
+            "Analyzing...";
 
-    }, 1000);
+    }, 900);
 
     setTimeout(() => {
 
         result.innerHTML =
-            "Gorgeousness: 999999% ✨";
+            "Gorgeousness: 999999%";
 
-    }, 2500);
+    }, 1800);
 
     setTimeout(() => {
 
         result.innerHTML =
             "ERROR: Number too large to display.";
 
-    }, 4000);
+    }, 2800);
 
     setTimeout(() => {
 
         result.innerHTML =
             "Final result: You're fucking gorgeous. ❤️";
 
-    }, 5500);
+    }, 4000);
 }
 
 
@@ -196,76 +150,38 @@ function calculateGorgeous() {
    MISS YOU
 ========================= */
 
-function missYou() {
+function calculateMiss() {
 
     const result =
-        document.getElementById("missResult");
+        document.getElementById("missAnswer");
 
     const answers = [
 
-        "A little... SIKE. I MISS YOU LIKE CRAZY. 😭",
+        "Diagnosis: Severe Meep deficiency. 🥺",
 
-        "Enough to check my phone hoping you messaged me. 🥺",
+        "I miss you an absolutely unreasonable amount. 😭",
 
-        "Currently experiencing severe Meep deficiency. 💀",
+        "Currently experiencing critical Meep withdrawal. 💀",
 
-        "I miss you more than I can explain. ❤️",
+        "I miss you every time you're not around. ❤️",
 
-        "Diagnosis: I desperately need Meep. 🧸❤️"
+        "Prescription: One Meep hug immediately. 🧸"
 
     ];
 
     const random =
-        answers[Math.floor(Math.random() * answers.length)];
+        answers[
+            Math.floor(
+                Math.random() * answers.length
+            )
+        ];
 
     result.innerHTML = random;
 }
 
 
 /* =========================
-   COMPATIBILITY
-========================= */
-
-function compatibility() {
-
-    const result =
-        document.getElementById("compatResult");
-
-    result.innerHTML =
-        "Consulting the universe... 🔮";
-
-    setTimeout(() => {
-
-        result.innerHTML =
-            "Compatibility: 99.99% 💘";
-
-    }, 1800);
-
-    setTimeout(() => {
-
-        result.innerHTML =
-            "Actually... recalculating.";
-
-    }, 3200);
-
-    setTimeout(() => {
-
-        result.innerHTML =
-            "Compatibility: ∞% ❤️";
-
-    }, 4500);
-
-    setTimeout(() => {
-
-        result.innerHTML =
-            "The universe says we're stuck with each other. 😭❤️";
-
-    }, 6000);
-}
-
-
-/* =========================
-   COMPLIMENT GENERATOR
+   COMPLIMENT MACHINE
 ========================= */
 
 function compliment() {
@@ -274,13 +190,13 @@ function compliment() {
 
         "You're genuinely one of the prettiest people I've ever seen. 🌷",
 
-        "Your smile is literally one of my favorite things. ❤️",
+        "Your smile is one of my favorite things in this world. ❤️",
 
-        "You're cute without even trying. It's unfair. 😭",
+        "You're cute without even trying. It's actually unfair. 😭",
 
         "I could look at you all day and still think you're gorgeous. ✨",
 
-        "You make ordinary days feel special. 🥹",
+        "You make normal days feel special. 🥹",
 
         "You're my favorite notification. 📱❤️",
 
@@ -288,22 +204,31 @@ function compliment() {
 
         "You're beautiful inside and out. 💗",
 
-        "You're the kind of person I never want to lose. 🫶",
+        "You're someone I never want to lose. 🫶",
 
-        "You're my favorite person. No debate. ❤️"
+        "You're my favorite person. No debate. ❤️",
+
+        "You're the prettiest Meep to ever Meep. 🎀",
+
+        "I hope you know how fucking special you are to me. ❤️"
 
     ];
 
     const random =
-        compliments[Math.floor(Math.random() * compliments.length)];
+        compliments[
+            Math.floor(
+                Math.random() * compliments.length
+            )
+        ];
 
-    document.getElementById("complimentResult")
-        .innerHTML = random;
+    document.getElementById(
+        "complimentResult"
+    ).innerHTML = random;
 }
 
 
 /* =========================
-   SECRET MESSAGE
+   SECRET
 ========================= */
 
 function secretMessage() {
@@ -312,79 +237,41 @@ function secretMessage() {
         document.getElementById("secretResult");
 
     result.innerHTML = `
+
         <div class="secret-message">
-            <div class="secret-heart">💗</div>
+
+            <div class="secret-gif">
+
+                <iframe
+                    src="https://giphy.com/embed/4UmpyDI90dl9hVSBzm"
+                    frameborder="0"
+                    allowfullscreen>
+                </iframe>
+
+            </div>
 
             <p>
-                Meep, if you're reading this...
+                Meep...
             </p>
 
             <p>
-                I hope you know that behind every joke,
-                every stupid message, and every "I love you,"
-                there's someone who genuinely cares about you
-                more than you probably realize.
+                If you're reading this,
+                I hope you know that behind every
+                stupid joke, every random message,
+                and every "I love you,"
+                there's someone who genuinely cares
+                about you more than you probably realize.
             </p>
 
             <p>
-                You're special to me.
+                You are so incredibly special to me.
             </p>
 
             <strong>
-                And I love you. Always. ❤️
+                I love you. Always. ♡
             </strong>
+
         </div>
+
     `;
-
 }
-
-
-/* =========================
-   CLICK HEARTS
-========================= */
-
-document.addEventListener("click", function(event) {
-
-    if (
-        event.target.tagName === "BUTTON" ||
-        event.target.closest("button")
-    ) {
-        return;
-    }
-
-    const heart = document.createElement("div");
-
-    heart.innerHTML = "❤️";
-
-    heart.style.position = "fixed";
-    heart.style.left = event.clientX + "px";
-    heart.style.top = event.clientY + "px";
-    heart.style.fontSize = "20px";
-    heart.style.pointerEvents = "none";
-    heart.style.zIndex = "9999";
-
-    document.body.appendChild(heart);
-
-    heart.animate(
-        [
-            {
-                transform: "translateY(0) scale(1)",
-                opacity: 1
-            },
-
-            {
-                transform: "translateY(-80px) scale(1.5)",
-                opacity: 0
-            }
-        ],
-        {
-            duration: 900,
-            easing: "ease-out"
-        }
-    );
-
-    setTimeout(() => {
-        heart.remove();
-    }, 900);
-
-});
