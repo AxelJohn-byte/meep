@@ -1,553 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Meep's World ♡</title>
-
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meep's World ♡</title>
+    <!-- Cute Retro Pixel Font -->
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <!-- Confetti Library for Celebrations -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- External CSS stylesheet -->
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-  <div class="site-shell">
-
-    <!-- TOP BROWSER BAR -->
-    <header class="browser-bar">
-      <div class="browser-title">
-        <span class="tiny-heart">♡</span>
-        <span>meep.love</span>
-      </div>
-
-      <div class="browser-buttons">
-        <button>−</button>
-        <button>□</button>
-        <button>×</button>
-      </div>
-    </header>
-
-    <div class="browser-address">
-      <span>←</span>
-      <span>↻</span>
-
-      <div class="address-field">
-        ♡ https://meep.love
-      </div>
-
-      <span>☆</span>
-      <span>♡</span>
+    <!-- Browser Address Bar -->
+    <div class="url-bar">
+        <span>🔒</span>
+        <div class="url-box">🌸 meep.love</div>
+        <span>⋮</span>
     </div>
 
+    <div class="desktop">
+        <!-- Background Decorations -->
+        <div class="deco" style="top: 10%; left: 8%;">✨</div>
+        <div class="deco" style="top: 15%; right: 10%;">💖</div>
+        <div class="deco" style="top: 75%; left: 5%;">🌸</div>
+        <div class="deco" style="top: 80%; right: 8%;">✨</div>
 
-    <!-- HERO -->
-    <section class="hero">
-
-      <div class="hero-art">
-        <div class="pixel-cat">
-          ૮ ˶ᵔ ᵕ ᵔ˶ ა
+        <!-- 1. WELCOME WINDOW -->
+        <div class="window active" id="win-welcome">
+            <div class="titlebar">
+                <span>♡ Welcome ♡</span>
+                <div class="controls"><span>_</span><span>☐</span><span onclick="closeWin('win-welcome')">✕</span></div>
+            </div>
+            <div class="content">
+                <div class="cat-illustration">🐱</div>
+                <h2>Welcome to<br>Meep's World ♡</h2>
+                <p>A little corner of the internet,<br>just for you. ♡</p>
+                <button class="btn" onclick="openWin('win-desktop')">Enter ♡</button>
+            </div>
         </div>
 
-        <div class="heart-outline">
-          ♡
+        <!-- 2. MAIN DESKTOP GRID WINDOW -->
+        <div class="window" id="win-desktop">
+            <div class="titlebar">
+                <span>♡ Meep's World ♡</span>
+                <div class="controls"><span>_</span><span>☐</span><span onclick="closeWin('win-desktop')">✕</span></div>
+            </div>
+            <div class="content">
+                <div class="icon-grid">
+                    <div class="app-icon" onclick="openWin('win-letter')">
+                        <div class="icon-img">💌</div>
+                        <span>Love Mail</span>
+                    </div>
+                    <div class="app-icon" onclick="openWin('win-tools')">
+                        <div class="icon-img">🛠️</div>
+                        <span>Love Tools</span>
+                    </div>
+                    <div class="app-icon" onclick="openWin('win-secret')">
+                        <div class="icon-img">🔒</div>
+                        <span>Secret</span>
+                    </div>
+                    <div class="app-icon" onclick="openWin('win-for-meep')">
+                        <div class="icon-img">💖</div>
+                        <span>For Meep</span>
+                    </div>
+                    <div class="app-icon" onclick="openWin('win-games')">
+                        <div class="icon-img">🎮</div>
+                        <span>Games</span>
+                    </div>
+                    <div class="app-icon" onclick="openWin('win-recycle')">
+                        <div class="icon-img">🗑️</div>
+                        <span>Recycle Bin</span>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="spark s1">✦</div>
-        <div class="spark s2">✧</div>
-
-        <div class="cd">
-          ◉
-        </div>
-      </div>
-
-
-      <div class="welcome-window window">
-
-        <div class="window-head">
-          <span>♡ Welcome</span>
-          <span>− □ ×</span>
-        </div>
-
-        <div class="window-body center">
-
-          <p class="eyebrow">
-            A LITTLE CORNER OF THE INTERNET
-          </p>
-
-          <h1>
-            Meep's<br>
-            <span>World ♡</span>
-          </h1>
-
-          <p class="intro">
-            A tiny website made especially for you.
-          </p>
-
-          <button
-            class="main-btn"
-            onclick="scrollToSection('love-tools')">
-            Enter ♡
-          </button>
-
-        </div>
-      </div>
-
-    </section>
-
-
-    <!-- LOVE LETTER -->
-    <section class="letter window">
-
-      <div class="window-head">
-        <span>♡ A Little Letter</span>
-
-        <button
-          class="close-look"
-          onclick="this.closest('section').classList.toggle('folded')">
-          −
-        </button>
-      </div>
-
-
-      <div class="letter-body">
-
-        <div>
-
-          <p>Dear Meep,</p>
-
-          <p>
-            I know I probably don't say it enough,
-            but you're genuinely one of the most beautiful
-            people I've ever met.
-          </p>
-
-          <p>
-            And I'm not only talking about how you look.
-            I love your smile, your laugh, your personality,
-            the way you talk, and all those little things
-            that make you who you are.
-          </p>
-
-          <p>
-            You make even the simplest days feel special.
-          </p>
-
-          <p>
-            So I made this little website because saying
-            <b>"I love you"</b> never feels like enough.
-          </p>
-
-          <p class="signature">
-            I love you, Meep. ♡
-          </p>
-
+        <!-- 3. LOVE MAIL WINDOW -->
+        <div class="window" id="win-letter">
+            <div class="titlebar">
+                <span>♡ A Little Letter</span>
+                <div class="controls"><span>_</span><span>☐</span><span onclick="closeWin('win-letter')">✕</span></div>
+            </div>
+            <div class="content" style="text-align: left;">
+                <p><strong>Dear Meep,</strong></p>
+                <p>I know I probably don't say it enough, but you're genuinely one of the most beautiful people I've ever met.</p>
+                <p>And I'm not only talking about how you look. I love your smile, your laugh, your personality, the way you talk, and all those little things that make you who you are.</p>
+                <p>You make even the simplest days feel special.</p>
+                <p>So I made this little website because saying "I love you" never feels like enough.</p>
+                <p><strong>I love you, Meep. ♡</strong></p>
+                <div style="text-align: right; width: 100%;">🐱🐾</div>
+            </div>
         </div>
 
-
-        <div class="letter-sticker">
-
-          <div class="mini-bear">
-            ૮₍ ˃ ⤙ ˂ ₎ა
-          </div>
-
-          <span>
-            made with love
-          </span>
-
+        <!-- 4. LOVE TOOLS MENU WINDOW -->
+        <div class="window" id="win-tools">
+            <div class="titlebar">
+                <span>♡ Love Tools</span>
+                <div class="controls"><span onclick="closeWin('win-tools')">✕</span></div>
+            </div>
+            <div class="content">
+                <div class="list-menu">
+                    <div class="list-item" onclick="openWin('win-calc')">
+                        <div class="list-item-left"><span>💖</span><span>Love Calculator</span></div>
+                        <span>></span>
+                    </div>
+                    <div class="list-item" onclick="openWin('win-cuteness')">
+                        <div class="list-item-left"><span>⭐</span><span>Cuteness Test</span></div>
+                        <span>></span>
+                    </div>
+                    <div class="list-item" onclick="openWin('win-gorgeous')">
+                        <div class="list-item-left"><span>✨</span><span>Gorgeousness Detector</span></div>
+                        <span>></span>
+                    </div>
+                    <div class="list-item" onclick="openWin('win-missyou')">
+                        <div class="list-item-left"><span>🧸</span><span>Miss You Meter</span></div>
+                        <span>></span>
+                    </div>
+                    <div class="list-item" onclick="openWin('win-compliment')">
+                        <div class="list-item-left"><span>💬</span><span>Compliment Machine</span></div>
+                        <span>></span>
+                    </div>
+                </div>
+            </div>
         </div>
 
-      </div>
-
-    </section>
-
-
-
-    <!-- LOVE TOOLS -->
-    <section
-      id="love-tools"
-      class="section">
-
-      <div class="section-title">
-        <span>♡</span>
-
-        <h2>
-          Love Tools
-        </h2>
-
-        <span>♡</span>
-      </div>
-
-
-      <div class="tools-grid">
-
-
-        <!-- LOVE -->
-        <button
-          class="tool-card"
-          onclick="openTool('love')">
-
-          <span class="tool-icon">
-            ♥
-          </span>
-
-          <strong>
-            Love Calculator
-          </strong>
-
-          <small>
-            How much do I love you?
-          </small>
-
-          <span class="arrow">
-            ›
-          </span>
-
-        </button>
-
-
-
-        <!-- CUTENESS -->
-        <button
-          class="tool-card"
-          onclick="openTool('cute')">
-
-          <span class="tool-icon star">
-            ★
-          </span>
-
-          <strong>
-            Cuteness Test
-          </strong>
-
-          <small>
-            Just how cute are you?
-          </small>
-
-          <span class="arrow">
-            ›
-          </span>
-
-        </button>
-
-
-
-        <!-- GORGEOUS -->
-        <button
-          class="tool-card"
-          onclick="openTool('gorgeous')">
-
-          <span class="tool-icon sparkle">
-            ✧
-          </span>
-
-          <strong>
-            Gorgeousness Detector
-          </strong>
-
-          <small>
-            Scanning for gorgeous...
-          </small>
-
-          <span class="arrow">
-            ›
-          </span>
-
-        </button>
-
-
-
-        <!-- MISS YOU -->
-        <button
-          class="tool-card"
-          onclick="openTool('miss')">
-
-          <span class="tool-icon">
-            ♡
-          </span>
-
-          <strong>
-            Miss You Meter
-          </strong>
-
-          <small>
-            How much do I miss you?
-          </small>
-
-          <span class="arrow">
-            ›
-          </span>
-
-        </button>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- TWO WINDOWS -->
-    <section class="two-col">
-
-
-      <!-- COMPLIMENT MACHINE -->
-      <div class="window message-window">
-
-        <div class="window-head">
-          <span>
-            ✉ Compliment Machine
-          </span>
-
-          <span>
-            ×
-          </span>
+        <!-- 5. LOVE CALCULATOR -->
+        <div class="window" id="win-calc">
+            <div class="titlebar">
+                <span>♡ Love Calculator</span>
+                <div class="controls"><span onclick="closeWin('win-calc')">✕</span></div>
+            </div>
+            <div class="content">
+                <h2>How much do I love you?</h2>
+                <button class="btn" onclick="runCalc()">Calculate ♡</button>
+                <div class="progress-bar" id="p1"><div class="progress-fill" id="pf1"></div></div>
+                <div class="result-box" id="res1">
+                    <h3>⚠️ ERROR ⚠️</h3>
+                    <p>Love level exceeds calculator capacity. ♡</p>
+                    <br>
+                    <p><strong>Final answer:</strong> I love you more than this thing can measure. ♡</p>
+                </div>
+            </div>
         </div>
 
-
-        <div class="window-body center">
-
-          <p class="soft">
-            Need a reminder of how amazing you are?
-          </p>
-
-          <button
-            class="secondary-btn"
-            onclick="newCompliment()">
-
-            Tell me something ♡
-
-          </button>
-
-
-          <div
-            id="compliment"
-            class="result-box">
-
-            Press the button whenever you need
-            someone to tell you how amazing you are. ♡
-
-          </div>
-
+        <!-- 6. CUTENESS TEST -->
+        <div class="window" id="win-cuteness">
+            <div class="titlebar">
+                <span>⭐ Cuteness Test</span>
+                <div class="controls"><span onclick="closeWin('win-cuteness')">✕</span></div>
+            </div>
+            <div class="content">
+                <div class="cat-illustration">🐰</div>
+                <p id="c-status">Measuring cuteness levels...</p>
+                <button class="btn" onclick="runCuteness()">Start Test ♡</button>
+                <div class="progress-bar" id="p2"><div class="progress-fill" id="pf2"></div></div>
+                <div class="result-box" id="res2">
+                    <h3>Cuteness: 247%</h3>
+                    <p>⚠️ <strong>WARNING:</strong> Cuteness levels dangerously high.</p>
+                    <br>
+                    <p><strong>Conclusion:</strong> You're ridiculously cute. ♡</p>
+                </div>
+            </div>
         </div>
 
-      </div>
-
-
-
-      <!-- SECRET -->
-      <div class="window secret-window">
-
-        <div class="window-head">
-
-          <span>
-            ♡ Secret Message
-          </span>
-
-          <span>
-            ×
-          </span>
-
+        <!-- 7. GORGEOUSNESS DETECTOR -->
+        <div class="window" id="win-gorgeous">
+            <div class="titlebar">
+                <span>✨ Gorgeousness Detector</span>
+                <div class="controls"><span onclick="closeWin('win-gorgeous')">✕</span></div>
+            </div>
+            <div class="content">
+                <div class="cat-illustration">👑</div>
+                <p>Scanning... ✨</p>
+                <button class="btn" onclick="runGorgeous()">Scan Meep ♡</button>
+                <div class="progress-bar" id="p3"><div class="progress-fill" id="pf3"></div></div>
+                <div class="result-box" id="res3">
+                    <h3>Gorgeousness: 999999%</h3>
+                    <p>"ERROR: Number too large to display."</p>
+                    <br>
+                    <p><strong>Final result:</strong> You're fucking gorgeous. ♡</p>
+                </div>
+            </div>
         </div>
 
-
-        <div class="window-body center">
-
-          <div
-            class="secret-lock"
-            id="secretIcon">
-
-            ♡
-
-          </div>
-
-
-          <p class="soft">
-            There is something hidden here...
-          </p>
-
-
-          <button
-            class="secondary-btn"
-            onclick="revealSecret()">
-
-            Open secret ♡
-
-          </button>
-
+        <!-- 8. MISS YOU METER -->
+        <div class="window" id="win-missyou">
+            <div class="titlebar">
+                <span>🧸 Miss You Meter</span>
+                <div class="controls"><span onclick="closeWin('win-missyou')">✕</span></div>
+            </div>
+            <div class="content">
+                <div class="cat-illustration">🐻</div>
+                <p>Checking distance...<br><i>(you're so far)</i></p>
+                <button class="btn" onclick="runMissYou()">Check Meter ♡</button>
+                <div class="result-box" id="res4">
+                    <h3>Diagnosis: Severe Meep deficiency. 🥺</h3>
+                    <p>I miss you an absolutely unreasonable amount.</p>
+                    <br>
+                    <p><strong>Prescription:</strong> One Meep hug immediately. ♡</p>
+                </div>
+            </div>
         </div>
 
-      </div>
-
-    </section>
-
-
-
-    <!-- LITTLE CARDS -->
-    <section class="little-things">
-
-
-      <div class="tiny-card">
-
-        <span>💿</span>
-
-        <b>
-          Our playlist
-        </b>
-
-        <small>
-          songs that remind me of you
-        </small>
-
-      </div>
-
-
-      <div class="tiny-card">
-
-        <span>✉</span>
-
-        <b>
-          Love mail
-        </b>
-
-        <small>
-          a message waiting for you
-        </small>
-
-      </div>
-
-
-      <div class="tiny-card">
-
-        <span>☆</span>
-
-        <b>
-          Favorite person
-        </b>
-
-        <small>
-          yeah, it's you
-        </small>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- FINAL -->
-    <section class="final-message">
-
-      <div class="clouds">
-        ✦　♡　✧　♡　✦
-      </div>
-
-      <h2>
-        Meep...
-      </h2>
-
-      <p>
-        If you ever forget how loved you are,
-        <br>
-        come back here. I'll always remind you.
-      </p>
-
-      <div class="final-heart">
-        ♡
-      </div>
-
-      <small>
-        made with love for Meep
-      </small>
-
-    </section>
-
-
-
-    <footer>
-
-      <span>
-        ♡ meep's world
-      </span>
-
-      <span>
-        best viewed with love
-      </span>
-
-    </footer>
-
-  </div>
-
-
-
-  <!-- POPUP -->
-  <div
-    class="modal"
-    id="toolModal"
-    aria-hidden="true">
-
-
-    <div class="modal-window window">
-
-
-      <div class="window-head">
-
-        <span id="modalTitle">
-          ♡
-        </span>
-
-        <button onclick="closeTool()">
-          ×
-        </button>
-
-      </div>
-
-
-      <div class="window-body center modal-content">
-
-
-        <div
-          id="modalIcon"
-          class="big-icon">
-
-          ♡
-
+        <!-- 9. COMPLIMENT MACHINE -->
+        <div class="window" id="win-compliment">
+            <div class="titlebar">
+                <span>💬 Compliment Machine</span>
+                <div class="controls"><span onclick="closeWin('win-compliment')">✕</span></div>
+            </div>
+            <div class="content">
+                <p>Press the button whenever you need someone to tell you how amazing you are. ♡</p>
+                <button class="btn" onclick="nextCompliment()">Tell me something ♡</button>
+                <div class="result-box" id="res5" style="display: block; width: 100%;">
+                    <p id="compliment-text">You make the world brighter just by being in it. ♡</p>
+                </div>
+            </div>
         </div>
 
-
-        <h3 id="modalQuestion">
-          How much do I love you?
-        </h3>
-
-
-        <p id="modalSub">
-          Let's find out.
-        </p>
-
-
-        <button
-          class="main-btn"
-          id="modalAction"
-          onclick="calculateTool()">
-
-          Calculate ♡
-
-        </button>
-
-
-        <div
-          id="modalResult"
-          class="modal-result">
-
+        <!-- 10. SECRET MESSAGE -->
+        <div class="window" id="win-secret">
+            <div class="titlebar">
+                <span>🔒 Secret Message</span>
+                <div class="controls"><span onclick="closeWin('win-secret')">✕</span></div>
+            </div>
+            <div class="content">
+                <div style="background: #e1beed; padding: 20px; border-radius: 12px; width: 100%; color: #fff;">
+                    🌆☁️✨
+                </div>
+                <p style="text-align: left; font-size: 16px;">
+                    <strong>Meep...</strong><br>
+                    If you're reading this, I hope you know that behind every stupid joke, every random message, and every "I love you," there's someone who genuinely cares about you more than you probably realize.<br><br>
+                    You are so incredibly special to me.<br><br>
+                    <strong>I love you. Always. ♡</strong>
+                </p>
+            </div>
         </div>
 
+        <!-- 11. FOR MEEP -->
+        <div class="window" id="win-for-meep">
+            <div class="titlebar">
+                <span>💖 For Meep</span>
+                <div class="controls"><span onclick="closeWin('win-for-meep')">✕</span></div>
+            </div>
+            <div class="content">
+                <div class="cat-illustration">🐱🎀</div>
+                <p>Thank you for being you.<br>You're the most amazing, beautiful, kind, and special person in the world.</p>
+                <p>I'm so lucky to have you. ♡</p>
+                <button class="btn" onclick="triggerConfetti()">You + Me ♡</button>
+                <p style="font-size: 14px; color: #a37299;">Forever and always.</p>
+            </div>
+        </div>
 
-      </div>
+        <!-- 12. RUNAWAY NO GAME -->
+        <div class="window" id="win-games">
+            <div class="titlebar">
+                <span>🎮 Games</span>
+                <div class="controls"><span onclick="closeWin('win-games')">✕</span></div>
+            </div>
+            <div class="content" style="position: relative; min-height: 180px;">
+                <p style="font-size: 22px;">Do you love me back? 🥺</p>
+                <div style="display: flex; gap: 15px; margin-top: 20px; justify-content: center; width: 100%;">
+                    <button class="btn" onclick="triggerConfetti(); alert('I knew it! ❤️🥰');">YES ♡</button>
+                    <button class="btn" id="no-game-btn" onmouseover="dodgeBtn()" onclick="dodgeBtn()" style="position: relative;">NO 😜</button>
+                </div>
+            </div>
+        </div>
 
+        <!-- 13. RECYCLE BIN -->
+        <div class="window" id="win-recycle">
+            <div class="titlebar">
+                <span>🗑️ Recycle Bin</span>
+                <div class="controls"><span onclick="closeWin('win-recycle')">✕</span></div>
+            </div>
+            <div class="content">
+                <p>Items in bin:</p>
+                <div style="background: #fff; border: 1px solid #e0c0d8; padding: 10px; border-radius: 6px; width: 100%;">
+                    ❌ Bad days<br>
+                    ❌ Sad thoughts<br>
+                    ❌ Doubts
+                </div>
+                <p style="font-size: 14px; color: #a5789c;">(Bin emptied automatically forever ♡)</p>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            Made with love ♡
+        </div>
     </div>
 
-  </div>
+    <!-- Retro Bottom Taskbar -->
+    <div class="taskbar">
+        <button class="start-btn" onclick="openWin('win-desktop')">🌸 Start</button>
+        <span style="font-size: 16px; color: #835479;" id="clock">12:00</span>
+    </div>
 
-
-  <script src="script.js"></script>
-
+    <!-- External JavaScript script file -->
+    <script src="script.js"></script>
 </body>
 </html>
