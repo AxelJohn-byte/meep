@@ -1,553 +1,375 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+const toolData = {
 
-  <title>Meep's World ♡</title>
+  love: {
 
-  <link rel="stylesheet" href="style.css">
-</head>
+    title: "♡ Love Calculator",
 
-<body>
+    icon: "♥",
 
-  <div class="site-shell">
+    question:
+      "How much do I love you?",
 
-    <!-- TOP BROWSER BAR -->
-    <header class="browser-bar">
-      <div class="browser-title">
-        <span class="tiny-heart">♡</span>
-        <span>meep.love</span>
-      </div>
+    sub:
+      "Let's calculate something that probably can't be measured.",
 
-      <div class="browser-buttons">
-        <button>−</button>
-        <button>□</button>
-        <button>×</button>
-      </div>
-    </header>
+    result:
+      "LOVE: 999999999999% ♡<br>" +
+      "<small>ERROR: The love level is too large to calculate.</small>"
 
-    <div class="browser-address">
-      <span>←</span>
-      <span>↻</span>
+  },
 
-      <div class="address-field">
-        ♡ https://meep.love
-      </div>
 
-      <span>☆</span>
-      <span>♡</span>
-    </div>
+  cute: {
 
+    title: "★ Cuteness Test",
 
-    <!-- HERO -->
-    <section class="hero">
+    icon: "★",
 
-      <div class="hero-art">
-        <div class="pixel-cat">
-          ૮ ˶ᵔ ᵕ ᵔ˶ ა
-        </div>
+    question:
+      "Just how cute are you?",
 
-        <div class="heart-outline">
-          ♡
-        </div>
+    sub:
+      "Scanning Meep's cuteness levels...",
 
-        <div class="spark s1">✦</div>
-        <div class="spark s2">✧</div>
+    result:
+      "CUTENESS: 247% ♡<br>" +
+      "<small>WARNING: Cuteness levels dangerously high.</small>"
 
-        <div class="cd">
-          ◉
-        </div>
-      </div>
+  },
 
 
-      <div class="welcome-window window">
+  gorgeous: {
 
-        <div class="window-head">
-          <span>♡ Welcome</span>
-          <span>− □ ×</span>
-        </div>
+    title:
+      "✧ Gorgeousness Detector",
 
-        <div class="window-body center">
+    icon:
+      "✧",
 
-          <p class="eyebrow">
-            A LITTLE CORNER OF THE INTERNET
-          </p>
+    question:
+      "Are you gorgeous?",
 
-          <h1>
-            Meep's<br>
-            <span>World ♡</span>
-          </h1>
+    sub:
+      "Running highly scientific analysis...",
 
-          <p class="intro">
-            A tiny website made especially for you.
-          </p>
+    result:
+      "GORGEOUSNESS: 9999999% ♡<br>" +
+      "<small>ERROR: Number too large to display.</small>"
 
-          <button
-            class="main-btn"
-            onclick="scrollToSection('love-tools')">
-            Enter ♡
-          </button>
+  },
 
-        </div>
-      </div>
 
-    </section>
+  miss: {
 
+    title:
+      "♡ Miss You Meter",
 
-    <!-- LOVE LETTER -->
-    <section class="letter window">
+    icon:
+      "♡",
 
-      <div class="window-head">
-        <span>♡ A Little Letter</span>
+    question:
+      "How much do I miss you?",
 
-        <button
-          class="close-look"
-          onclick="this.closest('section').classList.toggle('folded')">
-          −
-        </button>
-      </div>
+    sub:
+      "Checking distance between my heart and you...",
 
+    result:
+      "SEVERE MEEP DEFICIENCY ♡<br>" +
+      "<small>Prescription: One Meep hug immediately.</small>"
 
-      <div class="letter-body">
+  }
 
-        <div>
+};
 
-          <p>Dear Meep,</p>
 
-          <p>
-            I know I probably don't say it enough,
-            but you're genuinely one of the most beautiful
-            people I've ever met.
-          </p>
 
-          <p>
-            And I'm not only talking about how you look.
-            I love your smile, your laugh, your personality,
-            the way you talk, and all those little things
-            that make you who you are.
-          </p>
+let activeTool = null;
 
-          <p>
-            You make even the simplest days feel special.
-          </p>
 
-          <p>
-            So I made this little website because saying
-            <b>"I love you"</b> never feels like enough.
-          </p>
 
-          <p class="signature">
-            I love you, Meep. ♡
-          </p>
+/* OPEN TOOL */
 
-        </div>
+function openTool(type) {
 
+  activeTool = type;
 
-        <div class="letter-sticker">
+  const data =
+    toolData[type];
 
-          <div class="mini-bear">
-            ૮₍ ˃ ⤙ ˂ ₎ა
-          </div>
 
-          <span>
-            made with love
-          </span>
+  document.getElementById(
+    "modalTitle"
+  ).textContent =
+    data.title;
 
-        </div>
 
-      </div>
+  document.getElementById(
+    "modalIcon"
+  ).textContent =
+    data.icon;
 
-    </section>
 
+  document.getElementById(
+    "modalQuestion"
+  ).textContent =
+    data.question;
 
 
-    <!-- LOVE TOOLS -->
-    <section
-      id="love-tools"
-      class="section">
+  document.getElementById(
+    "modalSub"
+  ).textContent =
+    data.sub;
 
-      <div class="section-title">
-        <span>♡</span>
 
-        <h2>
-          Love Tools
-        </h2>
+  document.getElementById(
+    "modalResult"
+  ).innerHTML =
+    "";
 
-        <span>♡</span>
-      </div>
 
+  const button =
+    document.getElementById(
+      "modalAction"
+    );
 
-      <div class="tools-grid">
 
+  if (type === "miss") {
 
-        <!-- LOVE -->
-        <button
-          class="tool-card"
-          onclick="openTool('love')">
+    button.textContent =
+      "Check ♡";
 
-          <span class="tool-icon">
-            ♥
-          </span>
+  }
 
-          <strong>
-            Love Calculator
-          </strong>
+  else if (type === "gorgeous") {
 
-          <small>
-            How much do I love you?
-          </small>
+    button.textContent =
+      "Scan ♡";
 
-          <span class="arrow">
-            ›
-          </span>
+  }
 
-        </button>
+  else if (type === "cute") {
 
+    button.textContent =
+      "Check ♡";
 
+  }
 
-        <!-- CUTENESS -->
-        <button
-          class="tool-card"
-          onclick="openTool('cute')">
+  else {
 
-          <span class="tool-icon star">
-            ★
-          </span>
+    button.textContent =
+      "Calculate ♡";
 
-          <strong>
-            Cuteness Test
-          </strong>
+  }
 
-          <small>
-            Just how cute are you?
-          </small>
 
-          <span class="arrow">
-            ›
-          </span>
+  document
+    .getElementById("toolModal")
+    .classList.add("show");
 
-        </button>
 
+  document
+    .getElementById("toolModal")
+    .setAttribute(
+      "aria-hidden",
+      "false"
+    );
 
+}
 
-        <!-- GORGEOUS -->
-        <button
-          class="tool-card"
-          onclick="openTool('gorgeous')">
 
-          <span class="tool-icon sparkle">
-            ✧
-          </span>
 
-          <strong>
-            Gorgeousness Detector
-          </strong>
+/* CLOSE TOOL */
 
-          <small>
-            Scanning for gorgeous...
-          </small>
+function closeTool() {
 
-          <span class="arrow">
-            ›
-          </span>
+  document
+    .getElementById("toolModal")
+    .classList.remove("show");
 
-        </button>
 
+  document
+    .getElementById("toolModal")
+    .setAttribute(
+      "aria-hidden",
+      "true"
+    );
 
+}
 
-        <!-- MISS YOU -->
-        <button
-          class="tool-card"
-          onclick="openTool('miss')">
 
-          <span class="tool-icon">
-            ♡
-          </span>
 
-          <strong>
-            Miss You Meter
-          </strong>
+/* CALCULATE */
 
-          <small>
-            How much do I miss you?
-          </small>
+function calculateTool() {
 
-          <span class="arrow">
-            ›
-          </span>
+  const result =
+    document.getElementById(
+      "modalResult"
+    );
 
-        </button>
 
-      </div>
+  const data =
+    toolData[activeTool];
 
-    </section>
 
+  result.innerHTML =
+    "calculating... ♡";
 
 
-    <!-- TWO WINDOWS -->
-    <section class="two-col">
+  setTimeout(() => {
 
+    result.innerHTML =
+      data.result;
 
-      <!-- COMPLIMENT MACHINE -->
-      <div class="window message-window">
+  }, 650);
 
-        <div class="window-head">
-          <span>
-            ✉ Compliment Machine
-          </span>
+}
 
-          <span>
-            ×
-          </span>
-        </div>
 
 
-        <div class="window-body center">
+/* COMPLIMENT MACHINE */
 
-          <p class="soft">
-            Need a reminder of how amazing you are?
-          </p>
+function newCompliment() {
 
-          <button
-            class="secondary-btn"
-            onclick="newCompliment()">
+  const compliments = [
 
-            Tell me something ♡
+    "You make the world feel a little softer just by being in it. ♡",
 
-          </button>
+    "You're ridiculously pretty. It's honestly unfair. ♡",
 
+    "If being adorable were illegal, you'd be in serious trouble.",
 
-          <div
-            id="compliment"
-            class="result-box">
+    "You're my favorite notification. Every single time.",
 
-            Press the button whenever you need
-            someone to tell you how amazing you are. ♡
+    "You have no idea how much brighter you make my days. ♡",
 
-          </div>
+    "I could compliment you all day and still run out of words.",
 
-        </div>
+    "You're the kind of person I could never get tired of choosing. ♡"
 
-      </div>
+  ];
 
 
+  const box =
+    document.getElementById(
+      "compliment"
+    );
 
-      <!-- SECRET -->
-      <div class="window secret-window">
 
-        <div class="window-head">
+  const random =
+    Math.floor(
+      Math.random() *
+      compliments.length
+    );
 
-          <span>
-            ♡ Secret Message
-          </span>
 
-          <span>
-            ×
-          </span>
+  box.textContent =
+    compliments[random];
 
-        </div>
+}
 
 
-        <div class="window-body center">
 
-          <div
-            class="secret-lock"
-            id="secretIcon">
+/* SECRET MESSAGE */
 
-            ♡
+function revealSecret() {
 
-          </div>
+  const icon =
+    document.getElementById(
+      "secretIcon"
+    );
 
 
-          <p class="soft">
-            There is something hidden here...
-          </p>
+  icon.textContent =
+    "💗";
 
 
-          <button
-            class="secondary-btn"
-            onclick="revealSecret()">
+  const windowBody =
+    icon.parentElement;
 
-            Open secret ♡
 
-          </button>
+  const message =
+    windowBody.querySelector(
+      ".soft"
+    );
 
-        </div>
 
-      </div>
+  message.textContent =
+    "Meep... you're my favorite person. " +
+    "I hope you never forget that. ♡";
 
-    </section>
 
+  const button =
+    windowBody.querySelector(
+      "button"
+    );
 
 
-    <!-- LITTLE CARDS -->
-    <section class="little-things">
+  button.textContent =
+    "I love you too ♡";
 
 
-      <div class="tiny-card">
+  button.onclick = () => {
 
-        <span>💿</span>
+    message.textContent =
+      "There. That's all I wanted to say. " +
+      "I love you, always. ♡";
 
-        <b>
-          Our playlist
-        </b>
+  };
 
-        <small>
-          songs that remind me of you
-        </small>
+}
 
-      </div>
 
 
-      <div class="tiny-card">
+/* SCROLL */
 
-        <span>✉</span>
+function scrollToSection(id) {
 
-        <b>
-          Love mail
-        </b>
+  document
+    .getElementById(id)
+    .scrollIntoView({
+      behavior: "smooth"
+    });
 
-        <small>
-          a message waiting for you
-        </small>
+}
 
-      </div>
 
 
-      <div class="tiny-card">
+/* CLICK OUTSIDE POPUP */
 
-        <span>☆</span>
+document
+  .getElementById("toolModal")
+  .addEventListener(
+    "click",
+    (event) => {
 
-        <b>
-          Favorite person
-        </b>
+      if (
+        event.target.id ===
+        "toolModal"
+      ) {
 
-        <small>
-          yeah, it's you
-        </small>
+        closeTool();
 
-      </div>
+      }
 
-    </section>
+    }
+  );
 
 
 
-    <!-- FINAL -->
-    <section class="final-message">
+/* ESCAPE KEY */
 
-      <div class="clouds">
-        ✦　♡　✧　♡　✦
-      </div>
+document.addEventListener(
+  "keydown",
+  (event) => {
 
-      <h2>
-        Meep...
-      </h2>
+    if (
+      event.key === "Escape"
+    ) {
 
-      <p>
-        If you ever forget how loved you are,
-        <br>
-        come back here. I'll always remind you.
-      </p>
+      closeTool();
 
-      <div class="final-heart">
-        ♡
-      </div>
+    }
 
-      <small>
-        made with love for Meep
-      </small>
-
-    </section>
-
-
-
-    <footer>
-
-      <span>
-        ♡ meep's world
-      </span>
-
-      <span>
-        best viewed with love
-      </span>
-
-    </footer>
-
-  </div>
-
-
-
-  <!-- POPUP -->
-  <div
-    class="modal"
-    id="toolModal"
-    aria-hidden="true">
-
-
-    <div class="modal-window window">
-
-
-      <div class="window-head">
-
-        <span id="modalTitle">
-          ♡
-        </span>
-
-        <button onclick="closeTool()">
-          ×
-        </button>
-
-      </div>
-
-
-      <div class="window-body center modal-content">
-
-
-        <div
-          id="modalIcon"
-          class="big-icon">
-
-          ♡
-
-        </div>
-
-
-        <h3 id="modalQuestion">
-          How much do I love you?
-        </h3>
-
-
-        <p id="modalSub">
-          Let's find out.
-        </p>
-
-
-        <button
-          class="main-btn"
-          id="modalAction"
-          onclick="calculateTool()">
-
-          Calculate ♡
-
-        </button>
-
-
-        <div
-          id="modalResult"
-          class="modal-result">
-
-        </div>
-
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <script src="script.js"></script>
-
-</body>
-</html>
+  }
+);
